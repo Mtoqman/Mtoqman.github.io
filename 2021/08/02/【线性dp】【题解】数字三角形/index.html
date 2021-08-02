@@ -312,7 +312,7 @@
     
     
       <span class="dot"></span>
-      <span>552 words</span>
+      <span>557 words</span>
     
   </div>
   
@@ -363,16 +363,14 @@
 <h1 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h1>
 <p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>表示<strong>从（1，1）到（i，j)路径上的数的最大和</strong><br />
 由此可以轻松推导出<strong>转移方程</strong>：</p>
-\text{(1 < i$\leq$n且1$\leq$j$\leq$n)} \quad
-f(i,j)= \begin{cases}
-    f(i-1,j-1)+a[i][j],  &\text	{f(i-1,j-1) $\geq$ f(i-1,j)} \\
-    f(i-1,j)+a[i][j],	&\text	{f(i-1,j-1) < f(i-1,j)}
-\end{cases}
-
+<p>\text{ (1 &lt; i<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>n且1<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>j<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>n) } \quad<br />
+f(i,j)= \begin{cases}<br />
+f(i-1,j-1)+a[i][j],  &amp;\text	{ f(i-1,j-1) <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\geq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≥</span></span></span></span> f(i-1,j) } \<br />
+f(i-1,j)+a[i][j],	&amp;\text	{ f(i-1,j-1) &lt; f(i-1,j) }<br />
+\end{cases}</p>
 <p>即：</p>
-f[i][j]=a[i][j]+max(f[i-1][j-1],f[i-1][j]) \quad
-\text{(1 < i$\leq$n且1$\leq$j$\leq$n)}
-
+<p>f[i][j]=a[i][j]+max( f[i-1][j-1],f[i-1][j] ) \quad<br />
+\text{ (1 &lt; i<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>n且1<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>j<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>n) }</p>
 <h1 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h1>
 <p>(仅供参考)</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
