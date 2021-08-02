@@ -312,7 +312,7 @@
     
     
       <span class="dot"></span>
-      <span>557 words</span>
+      <span>636 words</span>
     
   </div>
   
@@ -371,6 +371,15 @@ f(i-1,j)+a[i][j],	&amp;\text	{ f(i-1,j-1) &lt; f(i-1,j) }<br />
 <p>即：</p>
 <p>f[i][j]=a[i][j]+max( f[i-1][j-1],f[i-1][j] ) \quad<br />
 \text{ (1 &lt; i<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>n且1<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>j<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">≤</span></span></span></span>n) }</p>
+<p>\begin{aligned}<br />
+f_Y(y) &amp; = f_X[h(y)]|h’(y)| \[2ex]<br />
+&amp; = f_X[h(y)]h’(y) \[2ex]<br />
+&amp; = \frac{1}{\theta}e^{-\frac{x}{\theta}}[\frac{dx}{dy}(-\frac{\theta}{ln(1-y)})] \[2ex]<br />
+&amp; = \frac{1}{\theta}e^{-\frac{-\frac{\theta}{ln(1-y)}}{\theta}}\frac{\theta}{1-y} \[2ex]<br />
+&amp; = \frac{1}{\theta}e^{ln(1-y)}\frac{\theta}{1-y} \[2ex]<br />
+&amp; = \frac{1-y}{\theta}\frac{\theta}{1-y} \[2ex]<br />
+&amp; = 1<br />
+\end{aligned}</p>
 <h1 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h1>
 <p>(仅供参考)</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
