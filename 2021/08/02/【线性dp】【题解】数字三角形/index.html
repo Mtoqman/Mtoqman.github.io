@@ -20,16 +20,16 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="算法分类  线性dp   题目描述 有一个由非负整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。 图例：  从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个和尽量大？  输入格式： 第一行输入整数 n 表示三角形的层数。 在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。  输出">
+  <meta name="description" content="算法分类 线性dp 题目描述有一个由非负整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。图例：从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个和尽量大？输入格式：第一行输入整数 n 表示三角形的层数。在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。  输出格式：输出三角形从第一行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【线性dp】【题解】数字三角形">
 <meta property="og:url" content="http://example.com/2021/08/02/%E3%80%90%E7%BA%BF%E6%80%A7dp%E3%80%91%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2/index.html">
 <meta property="og:site_name" content="Mtoq的小窝">
-<meta property="og:description" content="算法分类  线性dp   题目描述 有一个由非负整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。 图例：  从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个和尽量大？  输入格式： 第一行输入整数 n 表示三角形的层数。 在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。  输出">
+<meta property="og:description" content="算法分类 线性dp 题目描述有一个由非负整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。图例：从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个和尽量大？输入格式：第一行输入整数 n 表示三角形的层数。在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。  输出格式：输出三角形从第一行">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center">
 <meta property="article:published_time" content="2021-08-01T16:48:04.000Z">
-<meta property="article:modified_time" content="2021-08-06T15:47:18.253Z">
+<meta property="article:modified_time" content="2021-08-06T16:34:05.378Z">
 <meta property="article:author" content="Mtoq">
 <meta property="article:tag" content="动态规划（dp）">
 <meta name="twitter:card" content="summary">
@@ -79,7 +79,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -193,7 +305,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-06 23:47:18" itemprop="dateModified" datetime="2021-08-06T23:47:18+08:00">2021-08-06</time>
+                <time title="修改时间：2021-08-07 00:34:05" itemprop="dateModified" datetime="2021-08-07T00:34:05+08:00">2021-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,100 +328,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="算法分类"><a class="markdownIt-Anchor" href="#算法分类"></a> 算法分类</h1>
-<blockquote>
+        <h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h1><blockquote>
 <p>线性dp</p>
-</blockquote>
-<h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
-<p>有一个由<strong>非负</strong>整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。<br />
-<strong>图例：</strong><br />
-<img src="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center" alt="在这里插入图片描述" /><br />
-从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个<strong>和尽量大</strong>？</p>
-<blockquote>
-<p><strong>输入格式：</strong><br />
-第一行输入整数 n 表示三角形的层数。<br />
-在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。</p>
-<hr />
-<p><strong>输出格式：</strong><br />
-输出三角形从第一行的数到最后一行数所经过的数字之和的最大值。</p>
-</blockquote>
-<blockquote>
-<p><strong>样例输入：</strong></p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">4
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>有一个由<strong>非负</strong>整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。<br><strong>图例：</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center" alt="在这里插入图片描述"><br>从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个<strong>和尽量大</strong>？<br><strong>输入格式：</strong><br>第一行输入整数 n 表示三角形的层数。<br>在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。</p>
+<hr>
+<p><strong>输出格式：</strong><br>输出三角形从第一行的数到最后一行数所经过的数字之和的最大值。</p>
+<p><strong>样例输入：</strong><br><pre class="line-numbers language-none"><code class="language-none">4
 1
 3 2 
 4 10 1
 4 3 2 20
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p><strong>样例输出：</strong></p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">24
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<blockquote>
-<p><strong>样例解释：</strong><br />
-1—&gt;2—&gt;1—&gt;20<br />
-1+2+1+20=24</p>
-</blockquote>
-<blockquote>
-<p><strong>数据范围与提示：</strong><br />
-<strong>1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span> n <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span> 1000</strong></p>
-</blockquote>
-<h1 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h1>
-<p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>表示<strong>从（1，1）到（i，j)路径上的数的最大和</strong><br />
-由此可以轻松推导出<mark>转移方程</mark>：</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext> (1 &lt; i</mtext><mstyle scriptlevel="0" displaystyle="false"><mo>≤</mo></mstyle><mtext>n且1</mtext><mstyle scriptlevel="0" displaystyle="false"><mo>≤</mo></mstyle><mtext>j</mtext><mstyle scriptlevel="0" displaystyle="false"><mo>≤</mo></mstyle><mtext>n) </mtext></mrow><annotation encoding="application/x-tex">\text{ (1 &lt; i$\leq$n且1$\leq$j$\leq$n) }
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord"> (1 &lt; i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">n</span><span class="mord cjk_fallback">且</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">n) </span></span></span></span></span></span></p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>f(i-1,j-1) </mtext><mstyle scriptlevel="0" displaystyle="false"><mo>≥</mo></mstyle><mtext> f(i-1,j)</mtext></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo>+</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>f(i-1,j-1) &lt; f(i-1,j)</mtext></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">f(i,j)= \begin{cases}
-    f(i-1,j-1)+a[i][j],  &amp;\text {f(i-1,j-1) $\geq$ f(i-1,j)} \\
-    f(i-1,j)+a[i][j],    &amp;\text	{f(i-1,j-1) &lt; f(i-1,j)}
-\end{cases}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">f(i-1,j-1) </span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"> f(i-1,j)</span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">f(i-1,j-1) &lt; f(i-1,j)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<p>即：</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>+</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mspace width="1em"/><mrow><mtext> (1 &lt; i</mtext><mstyle scriptlevel="0" displaystyle="false"><mo>≤</mo></mstyle><mtext>n且1</mtext><mstyle scriptlevel="0" displaystyle="false"><mo>≤</mo></mstyle><mtext>j</mtext><mstyle scriptlevel="0" displaystyle="false"><mo>≤</mo></mstyle><mtext>n) </mtext></mrow></mrow><annotation encoding="application/x-tex">f[i][j]=a[i][j]+max( f[i-1][j-1],f[i-1][j] ) \quad
-\text{ (1 &lt; i$\leq$n且1$\leq$j$\leq$n) }
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mclose">)</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord"> (1 &lt; i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">n</span><span class="mord cjk_fallback">且</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">n) </span></span></span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi>t</mi><mi>h</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>o</mi><mi>s</mi><mi>a</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">something to say</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span></p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi>t</mi><mi>h</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>o</mi><mi>s</mi><mi>a</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">something to say
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span></span></p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1 + 1 = 2
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></span></p>
-<h1 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h1>
-<p>(仅供参考)</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>样例输出：</strong><br><pre class="line-numbers language-none"><code class="language-none">24
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br><strong>样例解释：</strong><br>1—-&gt;2—-&gt;1—-&gt;20<br>1+2+1+20=24</p>
+<p><strong>数据范围与提示：</strong><br><strong>1 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.312ex" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.751ex" role="img" focusable="false" viewBox="0 -636 778 774"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></g></g></g></svg></mjx-container> n <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.312ex" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.751ex" role="img" focusable="false" viewBox="0 -636 778 774"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></g></g></g></svg></mjx-container> 1000</strong></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>设<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.543ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2892 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g><g data-mml-node="mi" transform="translate(520,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(1023,0)"><path data-c="5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path></g><g data-mml-node="mi" transform="translate(1301,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1646,0)"><path data-c="5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></g><g data-mml-node="mo" transform="translate(1924,0)"><path data-c="5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path></g><g data-mml-node="mi" transform="translate(2202,0)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></g><g data-mml-node="mo" transform="translate(2614,0)"><path data-c="5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></g></g></g></svg></mjx-container>表示<strong>从（1，1）到（i，j)路径上的数的最大和</strong><br>由此可以轻松推导出==转移方程==：</p>
+<script type="math/tex; mode=display">
+\text{ (1 < i$\leq$n且1$\leq$j$\leq$n) }</script><script type="math/tex; mode=display">
+f(i,j)= \begin{cases}
+    f(i-1,j-1)+a[i][j],  &\text {f(i-1,j-1) $\geq$ f(i-1,j)} \\
+    f(i-1,j)+a[i][j],    &\text    {f(i-1,j-1) < f(i-1,j)}
+\end{cases}</script><p>即：</p>
+<script type="math/tex; mode=display">
+f[i][j]=a[i][j]+max( f[i-1][j-1],f[i-1][j] ) \quad
+\text{ (1 < i$\leq$n且1$\leq$j$\leq$n) }</script></blockquote>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>(仅供参考)</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;cstdio&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> n<span class="token punctuation">;</span>
 <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">1005</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1005</span><span class="token punctuation">]</span><span class="token punctuation">;</span>         <span class="token comment">//构建数字三角形 </span>
 <span class="token keyword">int</span> dp<span class="token punctuation">[</span><span class="token number">1005</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1005</span><span class="token punctuation">]</span><span class="token punctuation">,</span>maxn<span class="token punctuation">;</span>   <span class="token comment">//因为是非负整数，所以maxn初始化为0 </span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
+<span class="token punctuation">{</span>
 	<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#123;</span>
+	<span class="token punctuation">{</span>
 		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-		<span class="token punctuation">&#123;</span>
+		<span class="token punctuation">{</span>
 			<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
-	<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
 	dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>       <span class="token comment">//初始化第一个点 </span>
 	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#123;</span>
+	<span class="token punctuation">{</span>
 		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-		<span class="token punctuation">&#123;</span>
+		<span class="token punctuation">{</span>
 			dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">+</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">//转移方程 </span>
-		<span class="token punctuation">&#125;</span>
-	<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
 	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#123;</span>
+	<span class="token punctuation">{</span>
 		maxn<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>maxn<span class="token punctuation">,</span>dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//因为终点不确定，所以遍历整个最后一行，找到最大路径 </span>
-	<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">}</span>
 	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span>maxn<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h1>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1216">洛谷P1216</a></p>
+<span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1216">洛谷P1216</a></p>
 
     </div>
 
@@ -390,7 +464,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text"> 算法分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text"> 题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text"> 解题思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code"><span class="nav-number">4.</span> <span class="nav-text"> Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text"> 链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">算法分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -505,6 +579,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
