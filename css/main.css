@@ -1243,7 +1243,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ba8b82;
+  background: #29a89d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2646,7 +2646,7 @@ mjx-container + br {
   }
 }
 body {
-  background: url("/images/background-1.jpg");
+  background: url("https://z3.ax1x.com/2021/08/08/fQENRS.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
