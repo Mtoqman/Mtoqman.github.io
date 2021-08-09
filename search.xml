@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>20210809 oi练习日志</title>
+    <url>/2021/08/10/20210809%20oi%E7%BB%83%E4%B9%A0%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<h1 id="一、模拟测试11"><a href="#一、模拟测试11" class="headerlink" title="一、模拟测试11"></a>一、模拟测试11</h1><h2 id="T1-树的计数（P1232）"><a href="#T1-树的计数（P1232）" class="headerlink" title="T1 树的计数（P1232）"></a>T1 树的计数（<a href="https://www.luogu.com.cn/problem/P1232">P1232</a>）</h2><blockquote>
+<p>一开始没想到是先用bfs进行枚举，再用dfs进行判定是否合法，还是反之。<del>愉快地裸泳</del></p>
+<blockquote>
+<p><del>其实直接输出3.000可以骗10分，输出4.000可以骗5分</del></p>
+</blockquote>
+</blockquote>
+<h2 id="T2-烧水问题-（P1984）"><a href="#T2-烧水问题-（P1984）" class="headerlink" title="T2 烧水问题 （P1984）"></a>T2 烧水问题 （<a href="https://www.luogu.com.cn/problem/P1984">P1984</a>）</h2><blockquote>
+<p>读完题后就可以发现是<code>找规律</code>，<del>当时没找到</del></p>
+<p>想着先暴力再打表，结果洛谷提交时显示<em>代码过长</em></p>
+</blockquote>
+<h2 id="T3-平板涂色-（P1283）"><a href="#T3-平板涂色-（P1283）" class="headerlink" title="T3 平板涂色 （P1283）"></a>T3 平板涂色 （<a href="https://www.luogu.com.cn/problem/P1283">P1283</a>）</h2><blockquote>
+<p><code>bfs+优化</code>可以ac，标准算法是<code>动态规划</code></p>
+<blockquote>
+<p><del>直接输出样例还有12分</del></p>
+</blockquote>
+</blockquote>
+<h2 id="T4-方阵安排-（P1391）"><a href="#T4-方阵安排-（P1391）" class="headerlink" title="T4 方阵安排 （P1391）"></a>T4 方阵安排 （<a href="https://www.luogu.com.cn/problem/P1391">P1391</a>）</h2><blockquote>
+<p>又是一道搜索，<code>dfs+优化</code>可以ac</p>
+</blockquote>
+<h1 id="二、算法"><a href="#二、算法" class="headerlink" title="二、算法"></a>二、算法</h1><h2 id="差分约束"><a href="#差分约束" class="headerlink" title="差分约束"></a>差分约束</h2><p>可以看看<a href="https://blog.csdn.net/consciousman/article/details/53812818?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162852780616780274123092%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=162852780616780274123092&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-53812818.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F&amp;spm=1018.2226.3001.4187">别人的博客</a></p>
+]]></content>
+      <categories>
+        <category>oi练习日志</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/08/01/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
