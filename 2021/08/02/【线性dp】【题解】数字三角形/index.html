@@ -405,13 +405,13 @@ mjx-container[display="true"] + br {
 <p><strong>输入格式：</strong><br>第一行输入整数 n 表示三角形的层数。<br>在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。</p>
 <p><strong>输出格式：</strong><br>输出三角形从第一行的数到最后一行数所经过的数字之和的最大值。</p>
 <hr>
-<p><strong>样例输入：</strong><br><pre class="language-none"><code class="language-none">4
+<p><strong>样例输入：</strong><br><pre class="line-numbers language-none"><code class="language-none">4
 1
 3 2 
 4 10 1
 4 3 2 20
-</code></pre><br><strong>样例输出：</strong><br><pre class="language-none"><code class="language-none">24
-</code></pre></p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>样例输出：</strong><br><pre class="line-numbers language-none"><code class="language-none">24
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
 <hr>
 <p><strong>样例解释：</strong><br>1—-&gt;2—-&gt;1—-&gt;20<br>1+2+1+20=24</p>
 <hr>
@@ -427,7 +427,7 @@ f(i,j)= \begin{cases}
 <script type="math/tex; mode=display">
 f[i][j]=a[i][j]+max( f[i-1][j-1],f[i-1][j] ) \quad
 \text{ (1 < i$\leq$n且1$\leq$j$\leq$n) }</script><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>(仅供参考)</p>
-<pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;cstdio&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> n<span class="token punctuation">;</span>
@@ -457,9 +457,9 @@ f[i][j]=a[i][j]+max( f[i-1][j-1],f[i-1][j] ) \quad
 	<span class="token punctuation">}</span>
 	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span>maxn<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> </code></pre>
+<span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1216">洛谷P1216</a></p>
-<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Picasso</span> <span class="token keyword">with</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Picasso</span> <span class="token keyword">with</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
 <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>      
 <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token class-name">Picasso</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
 <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>          
@@ -468,7 +468,7 @@ singleton <span class="token operator">=</span> <span class="token keyword">new<
 <span class="token punctuation">}</span>    
 <span class="token punctuation">}</span>    
 <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>  
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     </div>
 
