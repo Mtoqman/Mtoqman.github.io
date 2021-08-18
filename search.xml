@@ -65,10 +65,12 @@
   <entry>
     <title>【线性dp】【题解】数字三角形</title>
     <url>/2021/08/02/%E3%80%90%E7%BA%BF%E6%80%A7dp%E3%80%91%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2/</url>
-    <content><![CDATA[<h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h1><blockquote>
+    <content><![CDATA[<p>一篇普通的题解。（本蒟蒻的第一篇文章）<br><img src="https://z3.ax1x.com/2021/08/18/f7kyNj.md.jpg" width="100%" height="100%"><br><span id="more"></span></p>
+<h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h1><blockquote>
 <p>线性dp</p>
 </blockquote>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>有一个由<strong>非负</strong>整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。<br><strong>图例：</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center" alt="在这里插入图片描述"><br><span id="more"></span><br>从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个<strong>和尽量大</strong>？</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>有一个由<strong>非负</strong>整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。<br><strong>图例：</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center" alt="在这里插入图片描述"></p>
+<p>从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个<strong>和尽量大</strong>？</p>
 <blockquote>
 <p><strong>输入格式：</strong><br>第一行输入整数 n 表示三角形的层数。<br>在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。</p>
 <p><strong>输出格式：</strong><br>输出三角形从第一行的数到最后一行数所经过的数字之和的最大值。</p>

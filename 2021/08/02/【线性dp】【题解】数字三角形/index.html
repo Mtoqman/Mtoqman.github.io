@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"mtoqman.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="算法分类 线性dp  题目描述有一个由非负整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。图例：">
+  <meta name="description" content="一篇普通的题解。（本蒟蒻的第一篇文章）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【线性dp】【题解】数字三角形">
 <meta property="og:url" content="http://mtoqman.github.io/2021/08/02/%E3%80%90%E7%BA%BF%E6%80%A7dp%E3%80%91%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2/index.html">
 <meta property="og:site_name" content="Mtoq的小窝">
-<meta property="og:description" content="算法分类 线性dp  题目描述有一个由非负整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。图例：">
+<meta property="og:description" content="一篇普通的题解。（本蒟蒻的第一篇文章）">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/18/f7kyNj.md.jpg">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center">
 <meta property="article:published_time" content="2021-08-01T16:48:04.000Z">
-<meta property="article:modified_time" content="2021-08-11T17:14:06.185Z">
+<meta property="article:modified_time" content="2021-08-18T15:14:10.303Z">
 <meta property="article:author" content="Mtoq">
 <meta property="article:tag" content="动态规划（dp）">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/18/f7kyNj.md.jpg">
 
 <link rel="canonical" href="http://mtoqman.github.io/2021/08/02/%E3%80%90%E7%BA%BF%E6%80%A7dp%E3%80%91%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2/">
 
@@ -353,7 +354,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-12 01:14:06" itemprop="dateModified" datetime="2021-08-12T01:14:06+08:00">2021-08-12</time>
+                <time title="修改时间：2021-08-18 23:14:10" itemprop="dateModified" datetime="2021-08-18T23:14:10+08:00">2021-08-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -397,10 +398,12 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h1><blockquote>
+        <p>一篇普通的题解。（本蒟蒻的第一篇文章）<br><img src="https://z3.ax1x.com/2021/08/18/f7kyNj.md.jpg" width="100%" height="100%"><br><span id="more"></span></p>
+<h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h1><blockquote>
 <p>线性dp</p>
 </blockquote>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>有一个由<strong>非负</strong>整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。<br><strong>图例：</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center" alt="在这里插入图片描述"><br><span id="more"></span><br>从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个<strong>和尽量大</strong>？</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>有一个由<strong>非负</strong>整数组成的三角形，第一行只有一个数，除了最下行之外每个数的左下方和右下方各有一个数。<br><strong>图例：</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/4a1014dc995efbeb057d6b9839907ed8.png#pic_center" alt="在这里插入图片描述"></p>
+<p>从第一行的数开始，每次可以往左下或右下走一格，直到走到最下行，把沿途经过的数全部加起来。如何走才能使得这个<strong>和尽量大</strong>？</p>
 <blockquote>
 <p><strong>输入格式：</strong><br>第一行输入整数 n 表示三角形的层数。<br>在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。</p>
 <p><strong>输出格式：</strong><br>输出三角形从第一行的数到最后一行数所经过的数字之和的最大值。</p>
