@@ -65,7 +65,7 @@
   <entry>
     <title>【线性dp】【题解】数字三角形</title>
     <url>/2021/08/02/%E3%80%90%E7%BA%BF%E6%80%A7dp%E3%80%91%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2/</url>
-    <content><![CDATA[<p>一篇普通的题解。（本蒟蒻的第一篇文章）<br><img src="https://z3.ax1x.com/2021/08/18/f7kyNj.md.jpg" width="100%" height="100%"><br><span id="more"></span></p>
+    <content><![CDATA[<p>一篇普通的题解。（本蒟蒻的第一篇文章<span class="github-emoji" style="display:inline;vertical-align:middle"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>）<br><img src="https://z3.ax1x.com/2021/08/18/f7kyNj.md.jpg" width="100%" height="100%"><br><span id="more"></span></p>
 <h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h1><blockquote>
 <p>线性dp</p>
 </blockquote>
@@ -75,13 +75,13 @@
 <p><strong>输入格式：</strong><br>第一行输入整数 n 表示三角形的层数。<br>在接下来的 n 行中，每一行表示三角形的中每一行整数，整数之间以空格隔开。</p>
 <p><strong>输出格式：</strong><br>输出三角形从第一行的数到最后一行数所经过的数字之和的最大值。</p>
 <hr>
-<p><strong>样例输入：</strong><br><pre class="line-numbers language-none"><code class="language-none">4
+<p><strong>样例输入：</strong><br></p><pre class="line-numbers language-none"><code class="language-none">4
 1
 3 2 
 4 10 1
 4 3 2 20
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>样例输出：</strong><br><pre class="line-numbers language-none"><code class="language-none">24
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
 <hr>
 <p><strong>样例解释：</strong><br>1—-&gt;2—-&gt;1—-&gt;20<br>1+2+1+20=24</p>
 <hr>
